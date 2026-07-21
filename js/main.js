@@ -17,19 +17,35 @@
       intro.remove();
     } else {
       document.body.classList.add("no-scroll");
+      var introOpened = false;
+      var introTimers = [];
       var closeIntro = function () {
         if (!intro) return;
+        introTimers.forEach(window.clearTimeout);
         intro.classList.add("intro-leave");
         document.body.classList.remove("no-scroll");
         window.setTimeout(function () {
           if (intro) { intro.remove(); intro = null; }
         }, 1000);
       };
-      var introTimer = window.setTimeout(closeIntro, 3000);
+      var openEnvelope = function () {
+        if (introOpened || !intro) return;
+        introOpened = true;
+        intro.classList.add("opening");
+        introTimers.push(window.setTimeout(function () { intro.classList.add("out"); }, 450));
+        introTimers.push(window.setTimeout(function () { intro.classList.add("settle"); }, 1200));
+        introTimers.push(window.setTimeout(closeIntro, 4200));
+      };
+      // Fallback: öffnet sich von selbst, falls niemand klickt
+      var autoOpen = window.setTimeout(openEnvelope, 6000);
       intro.addEventListener("click", function () {
-        window.clearTimeout(introTimer);
-        closeIntro();
-      }, { once: true });
+        if (!introOpened) {
+          window.clearTimeout(autoOpen);
+          openEnvelope();
+        } else {
+          closeIntro();
+        }
+      });
     }
   }
 

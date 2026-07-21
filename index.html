@@ -167,15 +167,31 @@
     </defs>
   </svg>
 
-  <!-- ══ Welcome animation overlay ══ -->
+  <!-- ══ Welcome animation: envelope with invitation card ══ -->
   <div class="intro" id="intro">
-    <div class="intro-inner">
-      <div class="intro-ring-wrap">
-        <svg class="intro-ring" viewBox="0 0 220 220" aria-hidden="true"><use href="#orn-ring"/></svg>
-        <span class="intro-monogram">A&nbsp;<em>&amp;</em>&nbsp;V</span>
+    <div class="intro-stage">
+      <div class="envelope">
+        <div class="env-back"></div>
+        <div class="env-card">
+          <div class="intro-ring-wrap">
+            <svg class="intro-ring" viewBox="0 0 220 220" aria-hidden="true"><use href="#orn-ring"/></svg>
+            <span class="intro-monogram">A&nbsp;<em>&amp;</em>&nbsp;V</span>
+          </div>
+          <p class="intro-names">Anıl &amp; Victor</p>
+          <p class="intro-date">19 · 09 · 2026</p>
+        </div>
+        <svg class="env-front" viewBox="0 0 340 230" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M1 20 L170 142 L339 20 L339 211 Q339 229 321 229 L19 229 Q1 229 1 211 Z" fill="#FAF5EC" stroke="#E9DDC3" stroke-width="1.5"/>
+          <path d="M1 20 L170 142 L339 20" fill="none" stroke="#E9DDC3" stroke-width="1.2" opacity="0.7"/>
+        </svg>
+        <div class="env-flap">
+          <svg viewBox="0 0 340 154" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2 1 L338 1 L338 18 L178 148 Q170 154 162 148 L2 18 Z" fill="#F4EEE2" stroke="#E9DDC3" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="env-seal">A<em>&amp;</em>V</div>
       </div>
-      <p class="intro-names">Anıl &amp; Victor</p>
-      <p class="intro-date">19 · 09 · 2026</p>
+      <p class="intro-hint" data-i18n="intro.hint">Zum Öffnen tippen</p>
     </div>
   </div>
 

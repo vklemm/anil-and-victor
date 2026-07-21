@@ -66,26 +66,112 @@ img, svg, iframe { max-width: 100%; }
   cursor: pointer;
 }
 
-.intro-inner { text-align: center; padding: 1rem; }
+.intro-stage { text-align: center; padding: 1rem; }
+
+/* — Envelope — */
+
+.envelope {
+  position: relative;
+  width: min(340px, 84vw);
+  aspect-ratio: 340 / 230;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.intro:not(.opening) .envelope { animation: env-float 3.2s ease-in-out infinite; }
+
+.env-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(var(--blush-soft) 0%, var(--blush-soft) 42%, #F1EAE0 42%);
+  border: 1px solid var(--gold-soft);
+  box-shadow: var(--shadow);
+}
+
+.env-front {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 67%;
+  z-index: 4;
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.55, 0.06, 0.35, 1);
+}
+
+.env-flap svg { display: block; width: 100%; height: 100%; }
+
+.env-seal {
+  position: absolute;
+  left: 50%;
+  top: 64%;
+  z-index: 5;
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #D8BF8C, var(--gold) 70%);
+  color: var(--white);
+  font-family: var(--script);
+  font-size: 1.22rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(139, 109, 55, 0.35);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.env-seal em { font-style: normal; font-size: 0.68em; padding: 0 0.08em; opacity: 0.9; }
+
+.intro-hint {
+  margin-top: 1.7rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  animation: hint-pulse 2.2s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+}
+
+/* — Invitation card inside the envelope — */
+
+.env-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 88%;
+  transform: translate(-50%, -44%) scale(0.52);
+  background: var(--white);
+  border: 1px solid var(--gold-soft);
+  border-radius: 14px;
+  padding: 1.5rem 1.1rem 1.3rem;
+  box-shadow: 0 10px 30px rgba(88, 74, 58, 0.14);
+  transition: transform 0.85s cubic-bezier(0.25, 0.7, 0.25, 1);
+}
 
 .intro-ring-wrap {
   position: relative;
-  width: min(15rem, 62vw);
-  margin: 0 auto 1.4rem;
+  width: min(11rem, 46vw);
+  margin: 0 auto 0.9rem;
 }
 
 .intro-ring { display: block; width: 100%; height: auto; }
 
-.intro-ring .ring-path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: ring-draw 1.6s cubic-bezier(0.5, 0, 0.3, 1) 0.15s forwards;
-}
-
-.intro-ring .ring-sprigs {
-  opacity: 0;
-  animation: fade-in 0.9s ease 1.35s forwards;
-}
+.intro .ring-path { stroke-dasharray: 100; stroke-dashoffset: 100; }
+.intro .ring-sprigs { opacity: 0; }
 
 .intro-monogram {
   position: absolute;
@@ -94,35 +180,57 @@ img, svg, iframe { max-width: 100%; }
   align-items: center;
   justify-content: center;
   font-family: var(--script);
-  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  font-size: clamp(2.1rem, 7vw, 2.7rem);
   color: var(--ink);
   opacity: 0;
-  animation: fade-in 1s ease 0.85s forwards;
 }
 
 .intro-monogram em { font-style: normal; color: var(--gold); font-size: 0.62em; padding: 0 0.06em; }
 
 .intro-names {
   font-family: var(--serif);
-  font-size: 1.15rem;
-  letter-spacing: 0.42em;
-  text-indent: 0.42em;
+  font-size: 0.98rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
   text-transform: uppercase;
   color: var(--ink-soft);
   opacity: 0;
-  animation: fade-up 1s ease 1.5s forwards;
 }
 
 .intro-date {
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 0.88rem;
   letter-spacing: 0.3em;
   text-indent: 0.3em;
   color: var(--gold);
-  margin-top: 0.5rem;
+  margin-top: 0.45rem;
   opacity: 0;
-  animation: fade-up 1s ease 1.75s forwards;
 }
+
+/* — Opening choreography (classes set by JS) — */
+
+.intro.opening .env-flap { transform: rotateX(180deg); z-index: 1; }
+.intro.opening .env-seal { opacity: 0; transform: scale(0.5); }
+.intro.opening .intro-hint { opacity: 0; animation: none; }
+
+.intro.out .env-card { transform: translate(-50%, -104%) scale(0.8); }
+
+.intro.settle .env-card { transform: translate(-50%, -50%) scale(1); }
+
+.intro.settle .env-back,
+.intro.settle .env-front {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.intro.settle .env-flap { opacity: 0; transition: opacity 0.5s ease; }
+
+.intro.out .ring-path { animation: ring-draw 1.4s cubic-bezier(0.5, 0, 0.3, 1) 0.35s forwards; }
+.intro.out .ring-sprigs { animation: fade-in 0.8s ease 1.25s forwards; }
+.intro.out .intro-monogram { animation: fade-in 0.9s ease 0.85s forwards; }
+.intro.out .intro-names { animation: fade-up 0.9s ease 1.15s forwards; }
+.intro.out .intro-date { animation: fade-up 0.9s ease 1.35s forwards; }
 
 .intro.intro-leave {
   transform: translateY(-100%);
@@ -134,6 +242,14 @@ img, svg, iframe { max-width: 100%; }
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes env-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes hint-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
 }
 
 /* ═══ Header & language switch ════════════════════════════════ */

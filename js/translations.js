@@ -8,6 +8,7 @@ const I18N = {
 
   de: {
     "title": "Anıl & Victor · 19. September 2026",
+    "intro.hint": "Zum Öffnen tippen",
     "hero.pre": "Wir heiraten",
     "hero.date": "19. September 2026",
     "hero.venue": "Belvoirpark · Zürich",
@@ -73,6 +74,7 @@ const I18N = {
 
   tr: {
     "title": "Anıl & Victor · 19 Eylül 2026",
+    "intro.hint": "Açmak için dokunun",
     "hero.pre": "Evleniyoruz",
     "hero.date": "19 Eylül 2026",
     "hero.venue": "Belvoirpark · Zürih",
@@ -138,6 +140,7 @@ const I18N = {
 
   en: {
     "title": "Anıl & Victor · 19 September 2026",
+    "intro.hint": "Tap to open",
     "hero.pre": "We're getting married",
     "hero.date": "19 September 2026",
     "hero.venue": "Belvoir Park · Zurich",
@@ -203,6 +206,7 @@ const I18N = {
 
   it: {
     "title": "Anıl & Victor · 19 settembre 2026",
+    "intro.hint": "Tocca per aprire",
     "hero.pre": "Ci sposiamo",
     "hero.date": "19 settembre 2026",
     "hero.venue": "Belvoirpark · Zurigo",
@@ -268,6 +272,7 @@ const I18N = {
 
   fr: {
     "title": "Anıl & Victor · 19 septembre 2026",
+    "intro.hint": "Touchez pour ouvrir",
     "hero.pre": "Nous nous marions",
     "hero.date": "19 septembre 2026",
     "hero.venue": "Belvoirpark · Zurich",
