@@ -5,7 +5,7 @@
 (function () {
   "use strict";
 
-  var LANGS = ["de", "tr", "en", "it"];
+  var LANGS = ["de", "tr", "en", "it", "fr"];
   var WEDDING_DATE = new Date("2026-09-19T15:00:00+02:00");
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var currentLang = "de";
@@ -124,20 +124,82 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
-  /* ═══ RSVP placeholder toast ═══ */
+  /* ═══ Toast ═══ */
   var toast = document.getElementById("toast");
   var toastTimer = null;
-  function showToast() {
-    toast.textContent = I18N[currentLang]["rsvp.toast"];
+  function showToast(message) {
+    toast.textContent = message;
     toast.classList.add("show");
     if (toastTimer) window.clearTimeout(toastTimer);
     toastTimer = window.setTimeout(function () {
       toast.classList.remove("show");
-    }, 3400);
+    }, 4200);
   }
 
-  ["rsvpYes", "rsvpNo"].forEach(function (id) {
-    var btn = document.getElementById(id);
-    if (btn) btn.addEventListener("click", showToast);
-  });
+  /* ═══ RSVP form → Telegram ═══
+     Die Zugangsdaten sind nur Base64-kodiert, nicht verschlüsselt –
+     auf einer statischen Seite gibt es keinen Ort für echte Geheimnisse.
+     Bei Missbrauch: Token im BotFather regenerieren und hier ersetzen. */
+  var TG = {
+    a: "ODU5MjI1NzE0Mg==",
+    b: "QUFIdFAxZFRxM1JWdGZxUENaZ2VDUFV5cnZpYXFYVkJheGc=",
+    c: "MjQxMjI4Mjc="
+  };
+  var ATTEND_LABELS = { couple: "Zusage – zu zweit 🎉", single: "Zusage – alleine 🎉", no: "Absage 😢" };
+
+  var rsvpForm = document.getElementById("rsvpForm");
+  var rsvpSuccess = document.getElementById("rsvpSuccess");
+  var submitBtn = document.getElementById("rsvpSubmit");
+  var sending = false;
+
+  function showRsvpSuccess() {
+    rsvpForm.hidden = true;
+    rsvpSuccess.hidden = false;
+  }
+
+  function rsvpFail() {
+    sending = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = I18N[currentLang]["form.submit"];
+    showToast(I18N[currentLang]["form.error"]);
+  }
+
+  if (rsvpForm) {
+    rsvpForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (sending) return;
+      var name = document.getElementById("rsvpName").value.trim();
+      var attend = rsvpForm.querySelector('input[name="attend"]:checked');
+      if (!name || !attend) {
+        rsvpForm.reportValidity();
+        return;
+      }
+      if (document.getElementById("rsvpWebsite").value) {
+        showRsvpSuccess(); // Honeypot gefüllt → Bot, still schlucken
+        return;
+      }
+      sending = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = I18N[currentLang]["form.sending"];
+      var allergies = document.getElementById("rsvpAllergies").value.trim();
+      var comments = document.getElementById("rsvpComments").value.trim();
+      var text =
+        "💌 Neue RSVP über die Website\n" +
+        "👤 " + name + "\n" +
+        "👥 " + ATTEND_LABELS[attend.value] + "\n" +
+        "⚠️ Allergien: " + (allergies || "–") + "\n" +
+        "💬 Kommentar: " + (comments || "–") + "\n" +
+        "🌐 Sprache: " + currentLang.toUpperCase();
+      var url = "https://api.telegram.org/bot" + atob(TG.a) + ":" + atob(TG.b) + "/sendMessage";
+      fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({ chat_id: atob(TG.c), text: text })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.ok) { showRsvpSuccess(); } else { rsvpFail(); }
+        })
+        .catch(rsvpFail);
+    });
+  }
 })();

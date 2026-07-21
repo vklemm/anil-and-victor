@@ -1,4 +1,4 @@
-# Anil & Victor — Wedding Website 💍
+# Anıl & Victor — Wedding Website 💍
 
 A lightweight, single-page wedding invitation, live at
 **https://vklemm.github.io/anil-and-victor/**
@@ -9,8 +9,9 @@ Plain HTML/CSS/JS — no build step, no dependencies. Push to `main` and GitHub 
 
 | What | Where |
 |---|---|
-| All texts, in all 4 languages | `js/translations.js` — one block per language (`de`, `tr`, `en`, `it`). Keys map to `data-i18n` attributes in `index.html`. |
+| All texts, in all 5 languages | `js/translations.js` — one block per language (`de`, `tr`, `en`, `it`, `fr`). Keys map to `data-i18n` attributes in `index.html`. `\n` inside a string makes a line break (used in the tram card). |
 | Wedding date/time (countdown) | `js/main.js`, the `WEDDING_DATE` constant — **and** the date strings in `js/translations.js` (`hero.date`, `program.sub`, `title`) plus the footer line in `index.html`. |
+| RSVP deadline | `rsvp.deadline` in `js/translations.js` (all 5 languages). |
 | Colors | `css/style.css`, the `:root` block at the top. |
 | Names / structure / sections | `index.html`. German text in the HTML is only the pre-JS fallback — the visible text always comes from `translations.js`. |
 
@@ -21,25 +22,21 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-## Wiring up the RSVP buttons (currently placeholders)
+## RSVP form → Telegram
 
-The two buttons in the RSVP section show a "coming soon" toast. Three easy ways to make them real:
+The RSVP form sends each submission as a Telegram message to Victor via the bot
+`@anil_victor_wedding_bot` (fields: name, couple/alone/decline, allergies, comments, plus the
+language the guest used). There is no backend — the browser calls the Telegram
+Bot API directly.
 
-**Option A — Email (zero setup).** In `index.html`, replace the two `<button>` elements with mailto links:
-
-```html
-<a class="btn btn-fill" href="mailto:YOU@example.com?subject=Zusage%20Hochzeit%20Anil%20%26%20Victor&body=Name:%0AAnzahl%20Personen:%0AAllergien/Essenswünsche:%0A">Mit Freude zusagen</a>
-```
-
-(keep the `data-i18n` attributes if you want the labels translated). Then delete the toast handler at the bottom of `js/main.js`.
-
-**Option B — Google Form.** Create a form (name, attending yes/no, number of guests, dietary needs, song wish 🎵), then point both buttons (or a single button) at the form URL:
-
-```html
-<a class="btn btn-fill" href="https://forms.gle/YOUR-FORM-ID" target="_blank" rel="noopener">RSVP</a>
-```
-
-**Option C — Formspree (form directly on the page).** Free tier: 50 submissions/month. Create a form at formspree.io, then replace the buttons with a `<form action="https://formspree.io/f/YOUR-ID" method="POST">` containing name/guests/diet fields. Submissions arrive by email.
+- **Where the credentials live:** `js/main.js`, the `TG` object. The three values are
+  base64-encoded (`TG.a` = bot id, `TG.b` = token secret part, `TG.c` = chat id).
+  This is **obfuscation, not encryption** — on a static site the token is ultimately
+  public. We accepted this tradeoff knowingly.
+- **If the bot ever gets abused** (spam messages arriving): open Telegram → @BotFather →
+  `/revoke` → pick the bot → you get a fresh token. Split it at the `:` and re-encode both
+  parts (`echo -n "NEW_ID" | base64`, `echo -n "NEW_SECRET" | base64`), put them into `TG.a`/`TG.b`, push.
+- **Spam protection:** a hidden "website" honeypot field silently swallows bot submissions.
 
 ## Notes
 
