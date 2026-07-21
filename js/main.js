@@ -13,7 +13,7 @@
   /* ═══ Intro overlay ═══ */
   var intro = document.getElementById("intro");
   if (intro) {
-    if (sessionStorage.getItem("introSeen") || reducedMotion) {
+    if (reducedMotion) {
       intro.remove();
     } else {
       document.body.classList.add("no-scroll");
@@ -21,7 +21,6 @@
         if (!intro) return;
         intro.classList.add("intro-leave");
         document.body.classList.remove("no-scroll");
-        sessionStorage.setItem("introSeen", "1");
         window.setTimeout(function () {
           if (intro) { intro.remove(); intro = null; }
         }, 1000);
@@ -143,7 +142,7 @@
   var TG = {
     a: "ODU5MjI1NzE0Mg==",
     b: "QUFIdFAxZFRxM1JWdGZxUENaZ2VDUFV5cnZpYXFYVkJheGc=",
-    c: "MjQxMjI4Mjc="
+    c: "LTU0Nzg5NTE2NzE="
   };
   var ATTEND_LABELS = { couple: "Zusage – zu zweit 🎉", single: "Zusage – alleine 🎉", no: "Absage 😢" };
 
@@ -187,7 +186,7 @@
         "💌 Neue RSVP über die Website\n" +
         "👤 " + name + "\n" +
         "👥 " + ATTEND_LABELS[attend.value] + "\n" +
-        "⚠️ Allergien: " + (allergies || "–") + "\n" +
+        "🍽️ Essenswünsche: " + (allergies || "–") + "\n" +
         "💬 Kommentar: " + (comments || "–") + "\n" +
         "🌐 Sprache: " + currentLang.toUpperCase();
       var url = "https://api.telegram.org/bot" + atob(TG.a) + ":" + atob(TG.b) + "/sendMessage";

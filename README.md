@@ -24,13 +24,15 @@ python3 -m http.server 8000
 
 ## RSVP form → Telegram
 
-The RSVP form sends each submission as a Telegram message to Victor via the bot
-`@anil_victor_wedding_bot` (fields: name, couple/alone/decline, allergies, comments, plus the
-language the guest used). There is no backend — the browser calls the Telegram
-Bot API directly.
+The RSVP form sends each submission as a Telegram message to the group
+"Victor and Anıl❤️" via the bot `@anil_victor_wedding_bot` (fields: name,
+couple/alone/decline, food preferences, comments, plus the language the guest used).
+There is no backend — the browser calls the Telegram Bot API directly.
 
 - **Where the credentials live:** `js/main.js`, the `TG` object. The three values are
-  base64-encoded (`TG.a` = bot id, `TG.b` = token secret part, `TG.c` = chat id).
+  base64-encoded (`TG.a` = bot id, `TG.b` = token secret part, `TG.c` = group chat id;
+  note: if Telegram ever converts the group to a supergroup, the chat id changes —
+  re-encode the new one).
   This is **obfuscation, not encryption** — on a static site the token is ultimately
   public. We accepted this tradeoff knowingly.
 - **If the bot ever gets abused** (spam messages arriving): open Telegram → @BotFather →
@@ -40,6 +42,6 @@ Bot API directly.
 
 ## Notes
 
-- The welcome animation plays once per browser session (per tab); it is skipped for visitors with "reduce motion" enabled and can be skipped with a click/tap.
+- The welcome animation plays on every page load; it is skipped for visitors with "reduce motion" enabled and can be skipped with a click/tap.
 - Language auto-detects from the browser (German default) and is remembered in `localStorage`.
 - After 19.09.2026, 15:00 the countdown turns into "Just married!".
