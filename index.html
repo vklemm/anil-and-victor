@@ -213,6 +213,37 @@
     <section class="hero">
       <svg class="hero-corner tl" viewBox="0 0 320 320" aria-hidden="true"><use href="#orn-corner"/></svg>
       <svg class="hero-corner br" viewBox="0 0 320 320" aria-hidden="true"><use href="#orn-corner"/></svg>
+      <div class="bloom-extras" aria-hidden="true">
+        <svg class="hero-corner tr" viewBox="0 0 320 320"><use href="#orn-corner"/></svg>
+        <svg class="hero-corner bl" viewBox="0 0 320 320"><use href="#orn-corner"/></svg>
+        <svg class="bloom-flower" style="left:7%;top:40%;width:28px;animation-duration:5.4s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="left:15%;top:60%;width:20px;animation-duration:6.3s;animation-delay:-2s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="left:27%;top:20%;width:18px;animation-duration:4.8s;animation-delay:-1s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="right:9%;top:34%;width:24px;animation-duration:5.8s;animation-delay:-3s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="right:17%;top:58%;width:19px;animation-duration:6.6s;animation-delay:-1.4s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="right:28%;bottom:14%;width:22px;animation-duration:5.1s;animation-delay:-2.6s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="left:12%;bottom:20%;width:24px;animation-duration:6s;animation-delay:-4s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-flower" style="right:6%;bottom:36%;width:17px;animation-duration:4.6s;animation-delay:-.8s" viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg>
+        <svg class="bloom-bud" style="left:22%;top:44%;width:8px;animation-duration:5s" viewBox="-3.5 -3.5 7 7"><use href="#orn-bud"/></svg>
+        <svg class="bloom-bud" style="right:24%;top:24%;width:7px;animation-duration:5.7s;animation-delay:-2.2s" viewBox="-3.5 -3.5 7 7"><use href="#orn-bud"/></svg>
+        <svg class="bloom-bud" style="left:33%;bottom:10%;width:9px;animation-duration:6.2s;animation-delay:-3.4s" viewBox="-3.5 -3.5 7 7"><use href="#orn-bud"/></svg>
+        <svg class="bloom-leaf" style="left:5%;top:26%;width:26px;animation-duration:6.8s;animation-delay:-1.8s" viewBox="-1 -16 29 20"><use href="#orn-leaf"/></svg>
+        <svg class="bloom-leaf" style="right:13%;bottom:16%;width:24px;animation-duration:5.5s;animation-delay:-2.8s;transform:scaleX(-1)" viewBox="-1 -16 29 20"><use href="#orn-leaf"/></svg>
+        <div class="petals">
+          <span class="petal" style="--l:4%;--d:11s;--delay:0s;--drift:80px;--s:11px"></span>
+          <span class="petal" style="--l:12%;--d:14s;--delay:-6s;--drift:-50px;--s:9px"></span>
+          <span class="petal" style="--l:21%;--d:10s;--delay:-3s;--drift:60px;--s:13px"></span>
+          <span class="petal" style="--l:30%;--d:13s;--delay:-9s;--drift:-70px;--s:8px"></span>
+          <span class="petal" style="--l:38%;--d:12s;--delay:-1.5s;--drift:90px;--s:10px"></span>
+          <span class="petal" style="--l:47%;--d:15s;--delay:-7s;--drift:-40px;--s:12px"></span>
+          <span class="petal" style="--l:55%;--d:10.5s;--delay:-4.5s;--drift:75px;--s:9px"></span>
+          <span class="petal" style="--l:64%;--d:13.5s;--delay:-11s;--drift:-85px;--s:11px"></span>
+          <span class="petal" style="--l:72%;--d:11.5s;--delay:-2.5s;--drift:55px;--s:13px"></span>
+          <span class="petal" style="--l:81%;--d:14.5s;--delay:-8s;--drift:-60px;--s:8px"></span>
+          <span class="petal" style="--l:89%;--d:12.5s;--delay:-5.5s;--drift:70px;--s:10px"></span>
+          <span class="petal" style="--l:96%;--d:10.8s;--delay:-1s;--drift:-45px;--s:12px"></span>
+        </div>
+      </div>
       <div class="hero-content">
         <p class="hero-pre" data-i18n="hero.pre">Wir heiraten</p>
         <h1 class="hero-names">Anıl <span class="amp">&amp;</span> Victor</h1>
@@ -399,7 +430,13 @@ Haltestelle «Brunaustrasse» – 2 Gehminuten</p>
     <svg class="orn-divider" viewBox="0 0 260 60" aria-hidden="true"><use href="#orn-divider"/></svg>
     <p class="footer-names">Anıl &amp; Victor</p>
     <p class="footer-meta">19.09.2026 · Belvoirpark · Zürich</p>
-    <p class="footer-tagline" data-i18n="footer.tagline">Wir freuen uns auf euch!</p>
+    <p class="footer-tagline" data-i18n="footer.tagline">Wir freuen uns auf Euch!</p>
+    <button type="button" class="bloom-toggle" id="bloomToggle" aria-pressed="false">
+      <span class="bloom-label" data-i18n="footer.bloom">Mehr Blüten</span>
+      <span class="bloom-switch" aria-hidden="true">
+        <span class="bloom-knob"><svg viewBox="-17 -17 34 34"><use href="#orn-flower"/></svg></span>
+      </span>
+    </button>
     <p class="footer-made">
       <span data-i18n="footer.made">Mit Liebe gemacht</span>
       <svg class="footer-heart" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-heart"/></svg>

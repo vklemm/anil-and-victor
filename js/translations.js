@@ -69,6 +69,7 @@ const I18N = {
     "gifts.text": "Eure Anwesenheit ist unser grösstes Geschenk! Falls Ihr uns etwas Materielles schenken möchtet, freuen wir uns besonders über einen Beitrag zu unserer Hochzeitsreise.",
 
     "footer.tagline": "Wir freuen uns auf Euch!",
+    "footer.bloom": "Mehr Blüten",
     "footer.made": "Mit Liebe gemacht"
   },
 
@@ -135,6 +136,7 @@ const I18N = {
     "gifts.text": "Bizim için en büyük hediye yanımızda olmanız! Yine de maddi bir hediye vermek isterseniz, balayımıza yapacağınız bir katkı bizi özellikle mutlu eder.",
 
     "footer.tagline": "Sizi aramızda görmekten mutluluk duyacağız!",
+    "footer.bloom": "Daha çok çiçek",
     "footer.made": "Sevgiyle hazırlandı"
   },
 
@@ -201,6 +203,7 @@ const I18N = {
     "gifts.text": "Your presence is our greatest gift! Should you wish to give us something material, we would be especially happy about a contribution to our honeymoon.",
 
     "footer.tagline": "We look forward to celebrating with you!",
+    "footer.bloom": "More flowers",
     "footer.made": "Made with love"
   },
 
@@ -267,6 +270,7 @@ const I18N = {
     "gifts.text": "La vostra presenza è il nostro regalo più grande! Se desiderate comunque farci un regalo materiale, saremo particolarmente felici di un contributo per il nostro viaggio di nozze.",
 
     "footer.tagline": "Vi aspettiamo!",
+    "footer.bloom": "Più fiori",
     "footer.made": "Fatto con amore"
   },
 
@@ -333,6 +337,7 @@ const I18N = {
     "gifts.text": "Votre présence est notre plus beau cadeau ! Si vous souhaitez tout de même nous offrir quelque chose, une contribution à notre voyage de noces nous ferait particulièrement plaisir.",
 
     "footer.tagline": "Nous nous réjouissons de vous voir !",
+    "footer.bloom": "Plus de fleurs",
     "footer.made": "Fait avec amour"
   }
 };

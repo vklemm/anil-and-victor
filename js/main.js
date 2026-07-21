@@ -139,6 +139,25 @@
     revealEls.forEach(function (el) { el.classList.add("visible"); });
   }
 
+  /* ═══ Bloom-Modus: florales Easter Egg ═══ */
+  var bloomToggle = document.getElementById("bloomToggle");
+  function setBloom(on, scrollUp) {
+    document.body.classList.toggle("bloom", on);
+    bloomToggle.setAttribute("aria-pressed", on ? "true" : "false");
+    try { localStorage.setItem("bloom", on ? "1" : "0"); } catch (e) { /* private mode */ }
+    if (on && scrollUp) {
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    }
+  }
+  if (bloomToggle) {
+    var savedBloom = null;
+    try { savedBloom = localStorage.getItem("bloom"); } catch (e) { /* private mode */ }
+    if (savedBloom === "1") setBloom(true, false);
+    bloomToggle.addEventListener("click", function () {
+      setBloom(!document.body.classList.contains("bloom"), true);
+    });
+  }
+
   /* ═══ Toast ═══ */
   var toast = document.getElementById("toast");
   var toastTimer = null;
