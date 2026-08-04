@@ -44,4 +44,4 @@ There is no backend — the browser calls the Telegram Bot API directly.
 
 - The welcome animation plays on every page load; it is skipped for visitors with "reduce motion" enabled and can be skipped with a click/tap.
 - Language auto-detects from the browser (German default) and is remembered in `localStorage`.
-- After 19.09.2026, 15:00 the countdown turns into "Just married!".
+- After 19.09.2026, 16:00 the countdown turns into "Just married!".

@@ -1050,3 +1050,5 @@ body.bloom .bloom-extras { display: block; }
   .petal { display: none; }
   .bloom-flower, .bloom-bud, .bloom-leaf { animation: none; }
 }
+.intro { display: none !important; }
+.reveal { opacity: 1 !important; transform: none !important; }

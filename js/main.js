@@ -6,7 +6,7 @@
   "use strict";
 
   var LANGS = ["de", "tr", "en", "it", "fr"];
-  var WEDDING_DATE = new Date("2026-09-19T15:00:00+02:00");
+  var WEDDING_DATE = new Date("2026-09-19T16:00:00+02:00");
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var currentLang = "de";
 
