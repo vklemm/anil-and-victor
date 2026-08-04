@@ -47,7 +47,7 @@ const I18N = {
 
     "rsvp.title": "Der schönste Tag wird noch schöner mit Euch.",
     "rsvp.text": "Wir freuen uns riesig, mit Euch zu feiern!",
-    "rsvp.deadline": "Bitte gebt uns bis am 1. August 2026 Bescheid.",
+    "rsvp.deadline": "Bitte gebt uns bis am 14. August 2026 Bescheid.",
     "form.name": "Name(n)",
     "form.attend": "Eure Antwort",
     "form.attend.couple": "Wir kommen zu zweit",
@@ -114,7 +114,7 @@ const I18N = {
 
     "rsvp.title": "En güzel günümüz sizinle daha da güzel olacak.",
     "rsvp.text": "Sizinle kutlamak için sabırsızlanıyoruz!",
-    "rsvp.deadline": "Lütfen bize en geç 1 Ağustos 2026'ya kadar haber verin.",
+    "rsvp.deadline": "Lütfen bize en geç 14 Ağustos 2026'ya kadar haber verin.",
     "form.name": "İsim(ler)",
     "form.attend": "Cevabınız",
     "form.attend.couple": "Çift olarak geliyoruz",
@@ -181,7 +181,7 @@ const I18N = {
 
     "rsvp.title": "Our favourite day will be even better with you there.",
     "rsvp.text": "We can't wait to celebrate with you!",
-    "rsvp.deadline": "Please let us know by 1 August 2026.",
+    "rsvp.deadline": "Please let us know by 14 August 2026.",
     "form.name": "Name(s)",
     "form.attend": "Your answer",
     "form.attend.couple": "We're coming as a couple",
@@ -248,7 +248,7 @@ const I18N = {
 
     "rsvp.title": "Il nostro giorno più bello lo sarà ancora di più con voi.",
     "rsvp.text": "Non vediamo l'ora di festeggiare insieme!",
-    "rsvp.deadline": "Vi preghiamo di rispondere entro il 1° agosto 2026.",
+    "rsvp.deadline": "Vi preghiamo di rispondere entro il 14 agosto 2026.",
     "form.name": "Nome/i",
     "form.attend": "La vostra risposta",
     "form.attend.couple": "Veniamo in coppia",
@@ -315,7 +315,7 @@ const I18N = {
 
     "rsvp.title": "Le plus beau jour de notre vie le sera encore plus avec vous.",
     "rsvp.text": "Nous nous réjouissons de fêter ensemble !",
-    "rsvp.deadline": "Merci de nous répondre d'ici au 1er août 2026.",
+    "rsvp.deadline": "Merci de nous répondre d'ici au 14 août 2026.",
     "form.name": "Nom(s)",
     "form.attend": "Votre réponse",
     "form.attend.couple": "Nous venons à deux",
