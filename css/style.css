@@ -399,6 +399,15 @@ img, svg, iframe { max-width: 100%; }
   animation: fade-up 1.1s ease 0.7s backwards;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 2.2rem;
+  animation: fade-up 1.1s ease 0.85s backwards;
+}
+
 /* — Bloom mode: hidden floral easter egg (toggle in footer) — */
 
 .bloom-extras { display: none; }
@@ -721,6 +730,43 @@ body.bloom .bloom-extras { display: block; }
 }
 
 .btn-outline:hover { background: var(--white); }
+
+/* Large hero call-to-action buttons (photos + quiz) */
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  min-width: min(20rem, 100%);
+  padding: 0.95rem 1.7rem;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-hero-icon { width: 1.9rem; height: 1.9rem; flex: none; }
+
+.btn-hero-text { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.btn-hero-label {
+  font-size: 1.02rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn-hero-hint {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  opacity: 0.78;
+}
+
+.btn-hero.btn-outline { border-width: 1.5px; }
+
+@media (min-width: 640px) {
+  .btn-hero { min-width: 17.5rem; }
+}
 
 /* ═══ RSVP ════════════════════════════════════════════════════ */
 

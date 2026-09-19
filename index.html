@@ -164,6 +164,18 @@
       <g id="icon-chevron" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 13 l7 7 7 -7"/>
       </g>
+      <g id="icon-camera" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="9.5" width="25" height="16.5" rx="2.6"/>
+        <path d="M11.4 9.5 L13.2 6.4 h5.6 L20.6 9.5"/>
+        <circle cx="16" cy="17.8" r="5"/>
+        <circle cx="23.8" cy="13.6" r="0.9" fill="currentColor" stroke="none"/>
+      </g>
+      <g id="icon-quiz" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.5" y="5" width="23" height="18" rx="3"/>
+        <path d="M11.5 23 v4.3 L16.8 23"/>
+        <path d="M12.8 11.4 a3.3 3.3 0 1 1 3.5 3.9 v1.5"/>
+        <circle cx="16.3" cy="19.2" r="0.95" fill="currentColor" stroke="none"/>
+      </g>
     </defs>
   </svg>
 
@@ -250,6 +262,22 @@
         <svg class="orn-divider" viewBox="0 0 260 60" aria-hidden="true"><use href="#orn-divider"/></svg>
         <p class="hero-date" data-i18n="hero.date">19. September 2026</p>
         <p class="hero-venue" data-i18n="hero.venue">Belvoirpark · Zürich</p>
+        <div class="hero-actions">
+          <a class="btn btn-hero btn-fill" href="https://drive.google.com/drive/folders/1Iy2_ls406eh1OVlYakt6XPRlg2C6gC-g" target="_blank" rel="noopener">
+            <svg class="btn-hero-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-camera"/></svg>
+            <span class="btn-hero-text">
+              <span class="btn-hero-label" data-i18n="hero.photos">Fotos teilen</span>
+              <span class="btn-hero-hint" data-i18n="hero.photosHint">Eure Bilder hochladen</span>
+            </span>
+          </a>
+          <a class="btn btn-hero btn-outline" href="https://kahoot.it" target="_blank" rel="noopener">
+            <svg class="btn-hero-icon" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-quiz"/></svg>
+            <span class="btn-hero-text">
+              <span class="btn-hero-label" data-i18n="hero.quiz">Quiz spielen</span>
+              <span class="btn-hero-hint" data-i18n="hero.quizHint">Kahoot · Hochzeitsquiz</span>
+            </span>
+          </a>
+        </div>
       </div>
       <a class="scroll-cue" href="#countdown" aria-label="Scroll">
         <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-chevron"/></svg>
